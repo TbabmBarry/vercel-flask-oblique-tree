@@ -19,7 +19,7 @@ def get_dataset():
     train_y = pd.read_csv(os.getcwd()+'/static/'+'train_y.csv', header=None)
     
     result = {
-        "trainingSet": train_X,
-        "labelSet": train_y
+        "trainingSet": train_X.values.tolist(),
+        "labelSet": train_y.iloc[:,0].tolist()
     }
     return jsonify(result)
