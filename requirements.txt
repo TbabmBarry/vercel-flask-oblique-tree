@@ -1,4 +1,2 @@
-Flask
+flask
 pandas
-sklearn
-numpy
