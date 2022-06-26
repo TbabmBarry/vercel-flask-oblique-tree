@@ -29,4 +29,4 @@ def get_dataset():
 def get_projection():
     with open(os.getcwd()+'/static/' + 'projection.json', 'r') as f:
         result = json.load(f)
-    return jsonify(result)
+    return result
