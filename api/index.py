@@ -15,8 +15,8 @@ def test():
 
 @app.route('/api/get_dataset')
 def get_dataset():
-    train_X = pd.read_csv(os.getcwd()+'\\static\\'+'\\train_x.csv', header=None)
-    train_y = pd.read_csv(os.getcwd()+'\\static\\'+'\\train_y.csv', header=None)
+    train_X = pd.read_csv(os.getcwd()+'/static/'+'train_x.csv', header=None)
+    train_y = pd.read_csv(os.getcwd()+'/static/'+'train_y.csv', header=None)
     
     result = {
         "trainingSet": train_X,
