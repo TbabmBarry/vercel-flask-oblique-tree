@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 import pandas as pd
 import json
 import os
@@ -30,3 +30,7 @@ def get_projection():
     with open(os.getcwd()+'/static/' + 'projection.json', 'r') as f:
         result = json.load(f)
     return result
+
+@app.route('/api/dataset_selected', methods=['POST'])
+def dataset_selected():
+    dataset_name = request.form.get('dataset_name')
