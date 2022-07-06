@@ -33,4 +33,13 @@ def get_projection():
 
 @app.route('/api/dataset_selected', methods=['POST'])
 def dataset_selected():
-    dataset_name = request.form.get('dataset_name')
+    data = request.json
+    dataset_name = data["dataset_name"]
+    train_X = pd.read_csv(os.getcwd()+'/static/'+'train_x_' + dataset_name + '.csv', header=None)
+    train_y = pd.read_csv(os.getcwd()+'/static/'+'train_y_' + dataset_name + '.csv', header=None)
+    
+    result = {
+        "trainingSet": train_X.values.tolist(),
+        "labelSet": train_y.iloc[:,0].tolist()
+    }
+    return jsonify(result)
