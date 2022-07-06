@@ -31,6 +31,14 @@ def get_projection():
         result = json.load(f)
     return result
 
+@app.route('/api/projection_selected', methods=['POST'])
+def projection_selected():
+    data = request.json
+    dataset_name = data["dataset_name"]
+    with open(os.getcwd()+'/static/' + 'projection_' + dataset_name + '.json', 'r') as f:
+        result = json.load(f)
+    return result
+
 @app.route('/api/dataset_selected', methods=['POST'])
 def dataset_selected():
     data = request.json
