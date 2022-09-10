@@ -51,3 +51,16 @@ def dataset_selected():
         "labelSet": train_y.iloc[:,0].tolist()
     }
     return jsonify(result)
+
+@app.route('/api/unscaled_dataset_selected', methods=['POST'])
+def unscaled_dataset_selected():
+    data = request.json
+    dataset_name = data["dataset_name"]
+    train_X = pd.read_csv(os.getcwd()+'/static/'+'train_x_' + dataset_name + '_unscaled.csv', header=None)
+    train_y = pd.read_csv(os.getcwd()+'/static/'+'train_y_' + dataset_name + '.csv', header=None)
+
+    result = {
+        "trainingSet": train_X.values.tolist(),
+        "labelSet": train_y.iloc[:,0].tolist()
+    }
+    return jsonify(result)
