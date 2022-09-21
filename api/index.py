@@ -43,12 +43,12 @@ def projection_selected():
 def dataset_selected():
     data = request.json
     dataset_name = data["dataset_name"]
-    train_X = pd.read_csv(os.getcwd()+'/static/'+'train_x_' + dataset_name + '.csv', header=None)
-    train_y = pd.read_csv(os.getcwd()+'/static/'+'train_y_' + dataset_name + '.csv', header=None)
+    X = pd.read_csv(os.getcwd()+'/static/'+'x_' + dataset_name + '_scaled.csv', header=None)
+    y = pd.read_csv(os.getcwd()+'/static/'+'y_' + dataset_name + '.csv', header=None)
     
     result = {
-        "trainingSet": train_X.values.tolist(),
-        "labelSet": train_y.iloc[:,0].tolist()
+        "trainingSet": X.values.tolist(),
+        "labelSet": y.iloc[:,0].tolist()
     }
     return jsonify(result)
 
@@ -56,11 +56,11 @@ def dataset_selected():
 def unscaled_dataset_selected():
     data = request.json
     dataset_name = data["dataset_name"]
-    train_X = pd.read_csv(os.getcwd()+'/static/'+'train_x_' + dataset_name + '_unscaled.csv', header=None)
-    train_y = pd.read_csv(os.getcwd()+'/static/'+'train_y_' + dataset_name + '.csv', header=None)
+    X = pd.read_csv(os.getcwd()+'/static/'+'x_' + dataset_name + '.csv', header=None)
+    y = pd.read_csv(os.getcwd()+'/static/'+'y_' + dataset_name + '.csv', header=None)
 
     result = {
-        "trainingSet": train_X.values.tolist(),
-        "labelSet": train_y.iloc[:,0].tolist()
+        "trainingSet": X.values.tolist(),
+        "labelSet": y.iloc[:,0].tolist()
     }
     return jsonify(result)
